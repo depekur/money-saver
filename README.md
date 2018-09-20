@@ -1,8 +1,8 @@
-#Money Saver
+# Money Saver
 
 Test task for [Cygnati](https://cygnati.com/) company. Simple app for recording expenses
 
-###Stack
+### Stack
 
 Backend: 
 [Lumen](https://lumen.laravel.com/) | 
@@ -13,7 +13,7 @@ Frontend:
 [Angular Material](https://material.angular.io/) | 
 
 
-###Requirement
+### Requirement
 `Apache with mod_rewrite All`
 
 `PHP >= 7.1.3`
@@ -26,7 +26,7 @@ Frontend:
 
 `Nodejs >= 8.11.1`
 
-###Setup
+### Setup
 
 ```bash
 git clone git@github.com:depekur/money-saver.git
