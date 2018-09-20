@@ -1,0 +1,33 @@
+@import "../../../assets/scss/mixins";
+
+.add-expense-category {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  flex-direction: row;
+
+  @include tablet() {
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.add-expense-cat__form {
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+.expense-list {
+  padding: 0;
+
+  .expense-list__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    padding: 5px 0;
+  }
+}
+
+

@@ -1,0 +1,22 @@
+<nav>
+  <button mat-raised-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <a routerLink="/"
+       mat-menu-item
+       routerLinkActive="link--active"
+       title="Add expense"
+       class="link" >Add expense</a>
+
+    <a routerLink="/expenses"
+       mat-menu-item
+       routerLinkActive="link--active"
+       title="Expenses list"
+       class="link" >Expenses list</a>
+
+    <a routerLink="/expense-category"
+       mat-menu-item
+       routerLinkActive="link--active"
+       title="Add expense"
+       class="link" >Expense category</a>
+  </mat-menu>
+</nav>

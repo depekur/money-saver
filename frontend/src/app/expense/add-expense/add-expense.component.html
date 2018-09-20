@@ -1,0 +1,75 @@
+<section class="add-expense">
+  <mat-card class="app-card">
+    <h2>Save your expenses</h2>
+
+    <form [formGroup]="expenseForm"
+          #formDirective="ngForm"
+          (ngSubmit)="onSubmit()"
+          class="add-expense__form">
+
+      <mat-form-field class="form-group">
+        <input matInput
+               formControlName="date"
+               [matDatepicker]="picker"
+               placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-hint>By default chosen today date</mat-hint>
+      </mat-form-field>
+
+
+      <mat-form-field class="form-group">
+        <mat-select placeholder="Expense category"
+                    formControlName="category">
+          <mat-option *ngFor="let category of expenseCategories" [value]="category.id">
+            {{ category.category }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>Choose expense category or <a class="link" routerLink="/expense-category">add new</a></mat-hint>
+        <mat-error *ngIf="category.hasError('required')">
+          Expense category is <strong>required.</strong>
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="form-group">
+        <input matInput
+               formControlName="amount"
+               placeholder="Amount">
+        <mat-hint>Set your amount in dollars in 25 or 25,99 or 25.99 format</mat-hint>
+        <mat-error *ngIf="amount.hasError('required')">
+          Amount is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="amount.hasError('pattern')">
+          Please provide amount in <strong>25 or 25,99 or 25.99 format</strong>
+        </mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field class="form-group">
+        <textarea matInput
+                  formControlName="body"
+                  placeholder="Description"></textarea>
+        <mat-hint>Additional description, leave blank if you want</mat-hint>
+        <mat-error *ngIf="body.hasError('maxlength')">
+          Max description length is <strong>{{ body.errors['maxlength'].requiredLength }} symbols.</strong>
+          You type {{ body.errors['maxlength'].actualLength }}
+        </mat-error>
+      </mat-form-field>
+
+      <div *ngIf="!isSubmitted" class="form-group form-group--submit">
+        <button mat-raised-button
+                (click)="resetForm(formDirective)"
+                type="button">Reset</button>
+
+        <button mat-raised-button
+                color="accent"
+                type="submit">Save</button>
+      </div>
+
+
+      <mat-spinner [diameter]="40" *ngIf="isSubmitted"></mat-spinner>
+
+    </form>
+  </mat-card>
+</section>

@@ -1,0 +1,16 @@
+@import "../../../assets/scss/var";
+
+nav {
+  button {
+    // color: $app-color-5;
+  }
+
+  a {
+    display: inline-block;
+    padding: 0 10px;
+
+    font-size: 14px;
+    color: $app-color-5;
+    text-decoration: none;
+  }
+}

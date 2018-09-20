@@ -1,0 +1,23 @@
+@import "../../../assets/scss/mixins";
+
+.add-expense {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-expense__form {
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+
+  @include phone() {
+    min-width: unset;
+  }
+
+  textarea {
+    height: 24px;
+  }
+}
+
+

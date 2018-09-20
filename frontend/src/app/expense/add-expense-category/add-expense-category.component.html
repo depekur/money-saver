@@ -1,0 +1,46 @@
+<section class="add-expense-category">
+  <mat-card class="app-card">
+    <h2>Add new expense category</h2>
+
+    <form [formGroup]="expenseCategoryForm"
+          (ngSubmit)="onSubmit()"
+          class="add-expense-cat__form">
+
+      <mat-form-field class="form-group">
+        <input matInput
+               name="categoryName"
+               formControlName="category"
+               placeholder="Expense category">
+        <mat-hint>Add new expense category</mat-hint>
+        <mat-error *ngIf="category.hasError('required')">
+          Category name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+
+      <div class="form-group form-group--submit">
+        <button mat-raised-button
+                color="accent"
+                type="submit">Save</button>
+      </div>
+
+      <mat-spinner [diameter]="40" *ngIf="isSubmitted"></mat-spinner>
+    </form>
+  </mat-card>
+
+  <mat-card class="app-card">
+    <h2>List of expense category</h2>
+    <mat-hint>You can delete category only if it doesn't contain any expense</mat-hint>
+
+    <ul class="expense-list">
+      <li *ngFor="let category of expenseCategories"
+          class="expense-list__item">
+        <span class="item__text">{{ category.category }}</span>
+        <button mat-button
+                (click)="deleteCategory(category.id)"
+                type="submit">Delete</button>
+      </li>
+    </ul>
+
+  </mat-card>
+</section>
