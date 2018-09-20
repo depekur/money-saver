@@ -1,9 +1,6 @@
 @import "./assets/scss/var";
 @import "./assets/scss/mixins";
-//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-//@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-//@import "~@angular/material/prebuilt-themes/purple-green.css";
 
 * {
   box-sizing: border-box;
@@ -30,7 +27,8 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 }
 
 .app-card {
-  min-width: 350px;
+  width: 100%;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;

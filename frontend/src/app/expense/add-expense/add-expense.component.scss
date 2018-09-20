@@ -7,13 +7,10 @@
 }
 
 .add-expense__form {
-  min-width: 350px;
+  width: 100%;
+  max-width: 350px;
   display: flex;
   flex-direction: column;
-
-  @include phone() {
-    min-width: unset;
-  }
 
   textarea {
     height: 24px;

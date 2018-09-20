@@ -1,3 +1,28 @@
-<p>
-  page-not-found works!
-</p>
+<section class="page-not-found">
+  <h1>404</h1>
+  <h2>Page not found!</h2>
+
+  <p>Hey, you don't want to been here. Try links below:</p>
+
+  <nav>
+    <a routerLink="/"
+       mat-menu-item
+       routerLinkActive="link--active"
+       title="Add expense"
+       class="link" >Add expense</a>
+
+    <a routerLink="/expenses"
+       mat-menu-item
+       routerLinkActive="link--active"
+       title="Expenses list"
+       class="link" >Expenses list</a>
+
+    <a routerLink="/expense-category"
+       mat-menu-item
+       routerLinkActive="link--active"
+       title="Add expense"
+       class="link" >Expense category</a>
+  </nav>
+
+</section>
+

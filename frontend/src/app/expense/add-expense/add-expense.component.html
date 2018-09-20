@@ -27,7 +27,7 @@
         </mat-select>
         <mat-hint>Choose expense category or <a class="link" routerLink="/expense-category">add new</a></mat-hint>
         <mat-error *ngIf="category.hasError('required')">
-          Expense category is <strong>required.</strong>
+          Expense category is <strong>required. </strong> <a class="link" routerLink="/expense-category">Add new category</a> if you want
         </mat-error>
       </mat-form-field>
 

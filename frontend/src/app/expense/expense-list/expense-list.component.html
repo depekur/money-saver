@@ -27,40 +27,45 @@
   </mat-card>
 
   <mat-card class="list">
-    <h2>Expenses list</h2>
+      <h2>Expenses list</h2>
 
-    <table mat-table
-           [dataSource]="expenses" multiTemplateDataRows
-           class="mat-elevation-z8 expense-list__table">
-      <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
-        <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-        <td mat-cell *matCellDef="let element">
-          {{ column.toLowerCase() === 'amount' ? '$' : "" }}
-          {{element[column]}}
-        </td>
-      </ng-container>
+      <table mat-table
+             [dataSource]="expenses" multiTemplateDataRows
+             class="mat-elevation-z8 expense-list__table">
+        <ng-container matColumnDef="{{column}}" *ngFor="let column of displayedColumns">
+          <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+          <td mat-cell *matCellDef="let element">
+            {{ column.toLowerCase() === 'amount' ? '$' : "" }}
+            {{
+              (column.toLowerCase() === 'body') && element[column]
+              ? (element[column].length > 20 ? (element[column] | slice:0:20)+'.. ' : element[column])
+              : element[column]
+            }}
 
-      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-      <ng-container matColumnDef="expandedDetail">
-        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-          <div class="example-element-detail"
-               [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-            <div class="example-element-description">
-              {{element.body ? element.body : 'Expense without description :('}}
+            <span *ngIf="column.toLowerCase() === 'body' && element[column].length > 20"
+                  class="show-description"
+                  (click)="expandedElement = element">Show more</span>
+          </td>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+            <div class="element-detail"
+                 [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+              <div class="element-body">
+                {{element.body !== '-' ? element.body : 'Expense without description :('}}
+              </div>
             </div>
-          </div>
-        </td>
-      </ng-container>
+          </td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let element; columns: displayedColumns;"
-          class="example-element-row"
-          [class.example-expanded-row]="expandedElement === element"
-          (click)="expandedElement = element">
-      </tr>
-      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-    </table>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="description-row"></tr>
+      </table>
 
 
-  </mat-card>
+    </mat-card>
 </section>

@@ -71,9 +71,6 @@ export class AddExpenseComponent implements OnInit, OnDestroy {
       body: this.body.value
     };
 
-    console.log(this.date.value);
-    //console.log(moment(parseInt(`${data.date/1000}`)));
-
     this.expenseService.addExpense(data).then(
       (msg) => {
         this.alertService.open(msg, 'ok');

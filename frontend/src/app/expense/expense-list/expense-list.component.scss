@@ -1,4 +1,5 @@
 @import "../../../assets/scss/mixins";
+@import "../../../assets/scss/var";
 
 .expense-list {
   display: flex;
@@ -11,8 +12,31 @@
     flex-direction: column;
   }
 
+  mat-card.mat-card {
+    @include phone() {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+  }
+
+  h2 {
+    @include phone() {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  table.mat-table {
+
+    th, td {
+      @include phone() {
+        font-size: 12px;
+      }
+    }
+  }
+
   .totals {
-    flex: 0 0 40%;
+    flex: 0 0 35%;
 
     @include tablet() {
       flex: 0 0 100%;
@@ -37,38 +61,28 @@
 
   }
 
+  .expense-list__table {
 
-  .expense-list__list {
+    .mat-header-cell:first-letter {
+      text-transform: capitalize;
+    }
 
+    tr.description-row {
+      height: 0;
+    }
+
+    .show-description {
+      color: $app-color-6;
+      cursor: pointer;
+    }
+
+    .element-detail {
+      overflow: hidden;
+      display: flex;
+    }
+
+    .element-body {
+      padding: 16px;
+    }
   }
-}
-
-
-table {
-  width: 100%;
-}
-
-tr.example-detail-row {
-  height: 0;
-}
-
-tr.example-element-row:not(.example-expanded-row):hover {
-  background: #f5f5f5;
-}
-
-tr.example-element-row:not(.example-expanded-row):active {
-  background: #efefef;
-}
-
-.example-element-row td {
-  border-bottom-width: 0;
-}
-
-.example-element-detail {
-  overflow: hidden;
-  display: flex;
-}
-
-.example-element-description {
-  padding: 16px;
 }

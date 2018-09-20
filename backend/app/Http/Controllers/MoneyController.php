@@ -55,7 +55,7 @@ class MoneyController extends BaseController
     foreach ($results->toArray() as $result) {
       //$result->date = date("jS \of F Y",  intval($result->date));
       if ($result->body == '0') {
-        $result->body = false;
+        $result->body = '-';
       }
 
       if (isset($totals[$result->category])) {

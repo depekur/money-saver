@@ -19,7 +19,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class ExpenseListComponent implements OnInit {
   expenses: Expense[];
   total: any;
-  displayedColumns: string[] = ['amount', 'category', 'date'];
+  displayedColumns: string[] = ['category', 'amount', 'date', 'body'];
   displayedTotalColumns: string[] = ['category', 'total', 'count'];
   expandedElement: Expense;
 
@@ -31,6 +31,7 @@ export class ExpenseListComponent implements OnInit {
 
   }
 
+
   getExpenseList() {
     this.expenseService.getExpense().subscribe(
       (res: IExpenseRes) => {
@@ -41,5 +42,10 @@ export class ExpenseListComponent implements OnInit {
         this.alertService.open(`Can't load expenses, please reload the page.`, 'ok', 5000);
       }
     );
+  }
+
+  //todo get list by date from-to
+  getListByParam(from, to) {
+
   }
 }
