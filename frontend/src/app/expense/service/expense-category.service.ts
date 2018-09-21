@@ -21,15 +21,19 @@ export class ExpenseCategoryService {
   }
 
   getCategories() {
-    this.http.get('/api/expense-category').subscribe(
-      (res: IExpenseCategory[]) => {
-        this.expenseCategories = res;
-        this.expenseCategories$.next(this.expenseCategories);
-      },
-      (error) => {
-        this.alertService.open(`Can't load expense category, please reload page`, 'ok', 5000);
-      }
-    );
+    if (this.expenseCategories) {
+      this.expenseCategories$.next(this.expenseCategories);
+    } else {
+      this.http.get('/api/expense-category').subscribe(
+        (res: IExpenseCategory[]) => {
+          this.expenseCategories = res;
+          this.expenseCategories$.next(this.expenseCategories);
+        },
+        (error) => {
+          this.alertService.open(`Can't load expense category, please reload page`, 'ok', 5000);
+        }
+      );
+    }
   }
 
   addCategory(data: INewExpenseCategoryReq): Promise<string> {

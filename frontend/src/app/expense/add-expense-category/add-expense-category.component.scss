@@ -27,6 +27,10 @@
     align-items: baseline;
 
     padding: 5px 0;
+
+    .item__text {
+      word-break: break-all;
+    }
   }
 }
 

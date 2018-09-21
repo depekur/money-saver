@@ -5,7 +5,7 @@ import { ExpenseListComponent } from './expense-list/expense-list.component';
 import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { AddExpenseCategoryComponent } from './add-expense-category/add-expense-category.component';
 
-const routes: Routes = [{
+export const routes: Routes = [{
   path: '', component: ExpenseComponent,
   children: [
     {path: '', component: AddExpenseComponent},

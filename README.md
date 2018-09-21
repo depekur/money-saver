@@ -2,31 +2,27 @@
 
 Test task for [Cygnati](https://cygnati.com/) company. Simple app for recording expenses
 
-### Stack
+## Stack
 
 Backend: 
 [Lumen](https://lumen.laravel.com/) | 
-`Sqlite database`
+`SQLite`
 
 Frontend: 
 [Angular](https://angular.io/) | 
-[Angular Material](https://material.angular.io/) | 
+[Angular Material](https://material.angular.io/)  
 
 
-### Requirement
+## Requirements
 `Apache with mod_rewrite All`
 
 `PHP >= 7.1.3`
-
-`sqlite`
-
-`Composer`
 
 `Angular CLI >= 6.0.0`
 
 `Nodejs >= 8.11.1`
 
-### Setup
+## Setup
 
 ```bash
 git clone git@github.com:depekur/money-saver.git
@@ -37,4 +33,11 @@ npm i
 ng build --prod
 
 make your server look in folder money-saver/public
+```
+
+## Tests
+
+```bash
+cd frontend
+ng test
 ```

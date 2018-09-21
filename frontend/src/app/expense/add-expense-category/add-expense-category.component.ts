@@ -15,22 +15,21 @@ export class AddExpenseCategoryComponent implements OnInit, OnDestroy {
   expenseCategories: IExpenseCategory[];
   expenseCategoriesSubscription: Subscription;
   isSubmitted: boolean = false;
-  serverMessage: string;
 
   constructor(private expenseCategoryService: ExpenseCategoryService,
               private alertService: SnackBarService) { }
 
   ngOnInit() {
     this.initForm();
-    this.getExpenseCategory();
+    this.expenseCategoriesSubscription = this.getExpenseCategory();
   }
 
   ngOnDestroy() {
     this.expenseCategoriesSubscription.unsubscribe();
   }
 
-  getExpenseCategory(): void {
-    this.expenseCategoriesSubscription = this.expenseCategoryService.categories$
+  getExpenseCategory(): Subscription {
+     return this.expenseCategoryService.categories$
       .subscribe(
         (categories: IExpenseCategory[]) => {
           this.expenseCategories = categories;
@@ -42,6 +41,7 @@ export class AddExpenseCategoryComponent implements OnInit, OnDestroy {
     this.expenseCategoryForm = new FormGroup({
       category: new FormControl('', [
         Validators.required,
+        Validators.maxLength(30)
       ])
     });
   }

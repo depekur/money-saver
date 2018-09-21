@@ -73,6 +73,8 @@ class MoneyController extends BaseController
 
       $totals[$result->category]["sum"] = round($totals[$result->category]["sum"], 2);
       $totals['all']["sum"] = round($totals['all']["sum"], 2);
+
+      $result->amount = round($result->amount, 2);
     }
 
     $_total = [];

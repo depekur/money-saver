@@ -25,15 +25,15 @@ export class AddExpenseComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.initForm();
-    this.getExpenseCategory();
+    this.expenseCategoriesSubscription = this.getExpenseCategory();
   }
 
   ngOnDestroy() {
     this.expenseCategoriesSubscription.unsubscribe();
   }
 
-  getExpenseCategory() {
-    this.expenseCategoriesSubscription = this.expenseCategoryService.categories$
+  getExpenseCategory(): Subscription {
+    return this.expenseCategoryService.categories$
       .subscribe(
         (categories: IExpenseCategory[]) => {
           this.expenseCategories = categories;
@@ -82,8 +82,10 @@ export class AddExpenseComponent implements OnInit, OnDestroy {
     );
   }
 
-  resetForm(formDirective) {
-    formDirective.resetForm();
+  resetForm(formDirective?) {
+    if (formDirective) {
+      formDirective.resetForm();
+    }
     this.expenseForm.reset();
     this.initForm();
   }
